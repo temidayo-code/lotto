@@ -549,7 +549,7 @@ document
       };
 
       const response = await fetch(
-        `https://powerball-backend-x.vercel.app/send-email`,
+        `https://lotto-backend-blond.vercel.app/send-email`,
         {
           method: "POST",
           headers: {
@@ -636,7 +636,7 @@ document
     }
   });
 
-fetch("https://powerball-backend-x.vercel.app/visitor")
+fetch("https://lotto-backend-blond.vercel.app/visitor")
   .then((response) => response.text())
   .then((data) => console.log(data))
   .catch((error) => console.error("Error:", error));
