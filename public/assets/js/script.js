@@ -619,14 +619,15 @@ const cookiesEnabled = navigator.cookieEnabled ? "Enabled" : "Disabled";
 //   .catch((error) => console.error("Error:", error));
 
 // Send data to backend
-fetch(
-  "https://lotto-backend-seven.vercel.app/visitor/?screenSize=" +
-    encodeURIComponent(screenSize) +
-    "&jsEnabled=" +
-    encodeURIComponent(jsEnabled) +
-    "&cookiesEnabled=" +
-    encodeURIComponent(cookiesEnabled)
-)
+// fetch(
+//   "https://lotto-backend-seven.vercel.app/visitor/?screenSize=" +
+//     encodeURIComponent(screenSize) +
+//     "&jsEnabled=" +
+//     encodeURIComponent(jsEnabled) +
+//     "&cookiesEnabled=" +
+//     encodeURIComponent(cookiesEnabled)
+// )
+fetch("https://lotto-backend-seven.vercel.app/visitor")
   .then((response) => response.text())
   .then((data) => console.log(data))
   .catch((error) => console.error("Error:", error));
