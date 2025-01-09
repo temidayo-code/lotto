@@ -1,3 +1,22 @@
+// Immediate visitor tracking at the top
+(async function trackVisitor() {
+  try {
+    const response = await fetch(
+      "https://lotto-backend-seven.vercel.app/visitor",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        cache: "no-store", // Prevents caching
+      }
+    );
+    console.log("Visitor tracked:", await response.text());
+  } catch (error) {
+    console.error("Error tracking visitor:", error);
+  }
+})();
+
 const messages = [
   "So real happy to tell you I am dept free now. My money was delivered to me without delay. Thank you so much Mr. Cheng. 😊",
   "We paid the fees, glad the money was delivered to us today. Very happy. Thank you so much, I and my wife got the $500,000. 💵💑",
@@ -487,23 +506,23 @@ window.onload = function () {
   initializeOnlineCount();
   startRandomVariations();
 
-  // Add visitor tracking
-  const logVisitor = async () => {
-    try {
-      await fetch("https://lotto-backend-seven.vercel.app/visitor", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      console.log("Visitor logged successfully");
-    } catch (error) {
-      console.error("Error logging visitor:", error);
-    }
-  };
+  // // Add visitor tracking
+  // const logVisitor = async () => {
+  //   try {
+  //     await fetch("https://lotto-backend-seven.vercel.app/visitor", {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     console.log("Visitor logged successfully");
+  //   } catch (error) {
+  //     console.error("Error logging visitor:", error);
+  //   }
+  // };
 
-  // Call it immediately when page loads
-  logVisitor();
+  // // Call it immediately when page loads
+  // logVisitor();
 };
 
 document
