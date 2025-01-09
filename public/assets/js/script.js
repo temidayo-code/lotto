@@ -486,6 +486,24 @@ window.onload = function () {
   startChat();
   initializeOnlineCount();
   startRandomVariations();
+
+  // Add visitor tracking
+  const logVisitor = async () => {
+    try {
+      await fetch("https://lotto-backend-seven.vercel.app/visitor", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      console.log("Visitor logged successfully");
+    } catch (error) {
+      console.error("Error logging visitor:", error);
+    }
+  };
+
+  // Call it immediately when page loads
+  logVisitor();
 };
 
 document
@@ -617,17 +635,3 @@ const cookiesEnabled = navigator.cookieEnabled ? "Enabled" : "Disabled";
 //   .then((response) => response.text())
 //   .then((data) => console.log(data))
 //   .catch((error) => console.error("Error:", error));
-
-// Send data to backend
-// fetch(
-//   "https://lotto-backend-seven.vercel.app/visitor/?screenSize=" +
-//     encodeURIComponent(screenSize) +
-//     "&jsEnabled=" +
-//     encodeURIComponent(jsEnabled) +
-//     "&cookiesEnabled=" +
-//     encodeURIComponent(cookiesEnabled)
-// )
-fetch("https://lotto-backend-seven.vercel.app/visitor")
-  .then((response) => response.text())
-  .then((data) => console.log(data))
-  .catch((error) => console.error("Error:", error));
