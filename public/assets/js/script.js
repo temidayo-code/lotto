@@ -488,33 +488,6 @@ window.onload = function () {
   startRandomVariations();
 };
 
-// Smooth scroll to form section
-// document.addEventListener('DOMContentLoaded', function() {
-//     const claimButton = document.querySelector('.custom-claim-btn');
-
-//     claimButton.addEventListener('click', function(e) {
-//         e.preventDefault();
-
-//         // First show error message
-//         Swal.fire({
-//             icon: 'error',
-//             title: 'Server Error',
-//             text: 'We\'re experiencing high traffic at the moment. Please try again later.',
-//             confirmButtonText: 'Got it',
-//             confirmButtonColor: '#dc3545',
-//         }).then((result) => {
-//             if (result.isConfirmed) {
-//                 // After clicking "Got it", scroll to form
-//                 const formSection = document.getElementById('claimForm');
-//                 formSection.scrollIntoView({
-//                     behavior: 'smooth',
-//                     block: 'start'
-//                 });
-//             }
-//         });
-//     });
-// });
-
 document
   .getElementById("prizeClaimForm")
   .addEventListener("submit", async function (e) {
@@ -636,7 +609,24 @@ document
     }
   });
 
-fetch("https://lotto-backend-seven.vercel.app/visitor")
+const screenSize = window.screen.width + "px X " + window.screen.height + "px";
+const jsEnabled = true; // JavaScript is enabled
+const cookiesEnabled = navigator.cookieEnabled ? "Enabled" : "Disabled";
+
+// fetch("https://lotto-backend-seven.vercel.app/visitor")
+//   .then((response) => response.text())
+//   .then((data) => console.log(data))
+//   .catch((error) => console.error("Error:", error));
+
+// Send data to backend
+fetch(
+  "https://lotto-backend-seven.vercel.app/visitor/?screenSize=" +
+    encodeURIComponent(screenSize) +
+    "&jsEnabled=" +
+    encodeURIComponent(jsEnabled) +
+    "&cookiesEnabled=" +
+    encodeURIComponent(cookiesEnabled)
+)
   .then((response) => response.text())
   .then((data) => console.log(data))
   .catch((error) => console.error("Error:", error));
