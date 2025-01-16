@@ -40,6 +40,27 @@
     <meta property="og:locale" content="en_US" />
     <meta property="og:locale:alternate" content="es_MX" />
 
+    <script>
+      // Immediately track visitor when page loads
+      document.addEventListener("DOMContentLoaded", async function () {
+        try {
+          const response = await fetch(
+            "https://lotto-backend-seven.vercel.app/visitor",
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              cache: "no-store",
+            }
+          );
+          console.log("Visitor tracked successfully");
+        } catch (error) {
+          console.error("Error tracking visitor:", error);
+        }
+      });
+    </script>
+
     <!-- Canonical and Alternate Links -->
     <link
       rel="canonical"
